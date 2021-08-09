@@ -1,0 +1,19 @@
+
+config wifi-device 'radio1'
+	option type 'mac80211'
+	option path 'pci0000:00/0000:00:14.0'
+	option hwmode '11g'
+	option noscan '1'
+	option country 'DE'
+	option htmode 'HT40'
+	option txpower '20'
+	option channel '11'
+
+config wifi-iface 'wifinet0'
+	option ssid 'OpenWrt'
+	option encryption 'psk2'
+	option device 'radio1'
+	option mode 'ap'
+	option network 'lan'
+	option key '1337code'
+

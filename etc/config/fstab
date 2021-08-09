@@ -1,0 +1,14 @@
+
+config global
+	option anon_swap '0'
+	option auto_swap '1'
+	option auto_mount '1'
+	option delay_root '5'
+	option check_fs '0'
+	option anon_mount '1'
+
+config mount
+	option target '/mnt/sda'
+	option uuid 'dab2603e-0da6-4449-9ccb-9199a0e42ee9'
+	option enabled '1'
+

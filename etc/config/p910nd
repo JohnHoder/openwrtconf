@@ -1,0 +1,31 @@
+
+config p910nd
+	option port '0'
+	option runas_root '0'
+	option mdns '0'
+	option mdns_ty 'Xerox Phaser 3117 Laser Printer'
+	option mdns_note 'Basement'
+	option bind '192.168.100.1'
+	option enabled '1'
+	option device '/dev/usb/xerox3117'
+
+config p910nd
+	option port '1'
+	option runas_root '0'
+	option mdns '0'
+	option mdns_ty 'HP LaserJet P1006'
+	option mdns_note 'Basement'
+	option bind '192.168.100.1'
+	option enabled '1'
+	option device '/dev/usb/hpp1006'
+
+config p910nd
+	option port '2'
+	option runas_root '0'
+	option mdns '0'
+	option mdns_ty 'Unnamed'
+	option mdns_note 'Basement'
+	option bind '192.168.100.1'
+	option enabled '1'
+	option device '/dev/usb/lp2'
+

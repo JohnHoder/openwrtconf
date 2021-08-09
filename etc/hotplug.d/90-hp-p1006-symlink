@@ -1,0 +1,39 @@
+HP_PRODID="3f0/3e17/100"
+SYMLINK="hpp1006"
+
+# Description: Action executed on boot (bind) and with the system on the fly
+if [ "${ACTION}" = "bind" ] ; then
+    if [ "${PRODUCT}" = "${HP_PRODID}" ]; then
+        logger -t hotplug "HP LaserJet P1006 printer plugged in"
+        DEVICE_NAME=$(ls /sys/${DEVPATH}/usbmisc | grep "lp")
+        if [ -z ${DEVICE_NAME} ]; then
+            logger -t hotplug "Warning DEVICE_NAME is empty -- DEVPATH is ${DEVPATH}"
+            exit
+        fi
+        logger -t hotplug "Device name of HP LaserJet P1006 is ${DEVICE_NAME}"
+        ln -s /dev/usb/${DEVICE_NAME} /dev/usb/${SYMLINK}
+        logger -t hotplug "Symlink from /dev/usb/${DEVICE_NAME} to /dev/usb/${SYMLINK} created"
+    fi
+fi
+ 
+if [ "${PRODUCT}" = "${HP_PRODID}" ]; then
+    if [ "${ACTION}" = "add" ]; then
+          logger -t hotplug "HP LaserJet P1006 printer plugged in"
+          DEVICE_NAME=$(ls /sys/${DEVPATH}/usbmisc | grep "lp")
+          if [ -z ${DEVICE_NAME} ]; then
+              logger -t hotplug "Warning DEVICE_NAME is empty -- DEVPATH is ${DEVPATH}"
+              exit
+          fi
+          logger -t hotplug "Device name of HP LaserJet P1006 is ${DEVICE_NAME}"
+          ln -s /dev/usb/${DEVICE_NAME} /dev/usb/${SYMLINK}
+          logger -t hotplug "Symlink from /dev/usb/${DEVICE_NAME} to /dev/usb/${SYMLINK} created"
+    fi
+fi
+ 
+if [ "${PRODUCT}" = "${HP_PRODID}" ]; then
+    if [ "${ACTION}" = "remove" ]; then
+        rm /dev/usb/${SYMLINK}
+        logger -t hotplug "Symlink /dev/usb/${SYMLINK} removed"
+    fi
+fi
+
